@@ -1,5 +1,5 @@
-Django Code Prettify
-====================
+DjangoCMS Code Prettify
+=======================
 
 An extension for Django CMS that adds the Google Code Prettify js for text fields.
 
