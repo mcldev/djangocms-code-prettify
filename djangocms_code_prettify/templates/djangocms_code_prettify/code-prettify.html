@@ -1,0 +1,12 @@
+{% load cms_tags static sekizai_tags i18n %}
+
+{% addtoblock 'css' %}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js{{ instance.get_url_params|safe }}"></script>
+{% endaddtoblock %}
+
+<pre class="prettyprint {% if instance.linenums %}linenums{%if instance.start_linenum %}:{{ instance.start_linenum }}{% endif %}{% endif %}
+            {% if instance.additional_classes %}{ instance.get_additional_classes }{% endif %}"
+     id="code-prettify-{{ instance.get_id_name }}"
+            {{ instance.attributes_str }}>
+<code class="{% if instance.lang %}language-{{ instance.lang }}{% endif %}">{{ instance.code|escape }}</code>
+</pre>

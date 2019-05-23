@@ -1,0 +1,8 @@
+include README.md
+include LICENSE
+
+recursive-include */static *
+recursive-include */templates *
+recursive-include */boilerplates *
+
+recursive-exclude *.pyc
