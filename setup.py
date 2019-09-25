@@ -7,7 +7,7 @@ read = lambda filepath: codecs.open(filepath, 'r', 'utf-8').read()
 
 setup(
     name='djangocms-code-prettify',
-    version='1.0.0',
+    version='1.0.1',
     description='Allows you to add Google Prettify formatted code as plugin text',
     long_description=read(os.path.join(os.path.dirname(__file__), 'README.md')),
     author='Google, Michael Carder',
