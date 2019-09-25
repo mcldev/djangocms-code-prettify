@@ -10,7 +10,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 
 setup(
     name='djangocms-code-prettify',
-    version='1.0.1',
+    version='1.1.0',
     description='Allows you to add Google Prettify formatted code as plugin text',
     long_description=README,
     long_description_content_type='text/markdown',

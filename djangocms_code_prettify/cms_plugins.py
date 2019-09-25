@@ -7,6 +7,7 @@ from cms.plugin_base import CMSPluginBase
 from .models import CodePrettify
 from .forms import CodePrettifyForm
 
+
 class CodePrettifyPlugin(CMSPluginBase):
     model = CodePrettify
     name = _('Code Prettify')
@@ -18,17 +19,17 @@ class CodePrettifyPlugin(CMSPluginBase):
             'fields': (
                 'lang',
                 'skin',
-                ('linenums', 'start_linenum'),
+                ('linenums', 'show_all_linenums', 'start_linenum'),
                 'code'
             )
         }),
         (_('Advanced'), {
             'classes': ('collapse',),
             'fields': (
-                ('id_name',
-                 'additional_classes',
-                 'attributes',
-                 ),
+                'autorun',
+                'id_name',
+                'additional_classes',
+                'attributes',
             ),
         }),
     )

@@ -23,3 +23,7 @@ See notes here:
 
 After installation simply add the plugins to the page.
 
+Notes
+-----
+Google Code Prettify can only load one style per page.
+This is due to simple structure and CSS that applies to generic Code objects.

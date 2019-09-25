@@ -4,7 +4,7 @@ Enables the user to add style plugin that displays a html tag with
 the provided settings from the style plugin.
 """
 from __future__ import unicode_literals
-
+import urllib
 from cms.models import CMSPlugin
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -35,10 +35,20 @@ class CodePrettify(CMSPlugin):
         default=True,
     )
 
+    show_all_linenums = models.BooleanField(
+        verbose_name=_('Show All Line Numbers'),
+        default=False,
+    )
+
     start_linenum = models.PositiveIntegerField(
         verbose_name=_('Optional Start Line Number'),
         blank=True,
         null=True,
+    )
+
+    autorun = models.BooleanField(
+        verbose_name=_('Run automatically on page load'),
+        default=True,
     )
 
     code = models.TextField(
@@ -76,11 +86,6 @@ class CodePrettify(CMSPlugin):
     def get_additional_classes(self):
         return ' '.join(item.strip() for item in self.additional_classes.split(',') if item.strip())
 
-    def get_skin(self):
-        if self.skin:
-            return self.skin
-        return 'default'
-
     @property
     def get_id_name(self):
         return self.id_name or str(self.pk)
@@ -88,16 +93,12 @@ class CodePrettify(CMSPlugin):
     def __str__(self):
         return self.get_id_name
 
+    def url_params_dict(self):
+        return {
+            'autorun': self.autorun,
+            'lang': self.lang,
+            'skin': self.skin,
+        }
 
     def get_url_params(self):
-        qry = ""
-        if self.lang or self.skin:
-            qry += "?"
-            if self.lang:
-                qry += "lang=" + str(self.lang)
-                if self.skin:
-                    qry += "&"
-            if self.skin:
-                qry += "skin=" + str(self.skin)
-
-        return qry
+        return "?" + urllib.parse.urlencode(self.url_params_dict())

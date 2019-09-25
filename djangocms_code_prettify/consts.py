@@ -65,7 +65,7 @@ LANG_CHOICES = [
 ]
 
 SKIN_CHOICES = [
-    ('default', 'default'),
+    ('', 'default'),
     ('desert', 'desert'),
     ('sunburst', 'sunburst'),
     ('sons-of-obsidian', 'sons-of-obsidian'),
