@@ -91,7 +91,8 @@ class CodePrettify(CMSPlugin):
         return self.id_name or str(self.pk)
 
     def __str__(self):
-        return self.get_id_name
+        lang = self.lang or 'default'
+        return "{lang}: {code}".format(lang=lang.upper(), code=self.code[:15])
 
     def url_params_dict(self):
         return {
